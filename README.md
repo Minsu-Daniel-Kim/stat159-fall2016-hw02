@@ -1,5 +1,7 @@
 ## STAT159 HW02
 
+# Simple linear regression
+
 ### Objective 
 In this analysis, I explore the statistical relationship between advertising budget and its effectiveness. In particular, I focus on the linear relationship between the increase in the budgets spending on TV advertisement and the increase in the number of items sold by reproducing the results from the book An Introduction to Statistical Learning.
 

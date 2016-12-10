@@ -27,7 +27,7 @@ library(grid)
 data = read.csv("../data/Advertising.csv")
 data.rdata = load("../data/regression.RData")
 
-print(xtable(summary(data), caption = 'Advertising data set'), comment = FALSE, caption.placement = 'top')
+print(xtable(summary(data), caption = 'Advertising data set shows the summary statistics for each predictor.'), comment = FALSE, caption.placement = 'bottom')
 
 ```
 
@@ -43,10 +43,12 @@ Before fitting the model, I first look at the general distributions of both TV a
 ### Hisogram of TV
 
 ![](../images/histogram-tv.png)
+Figure 1. Histogram of Budgts on TV (in thousands of dollors). There is no distinct pattern on budge spending for TV.
 
 ### Hisogram of Sales
 
 ![](../images/histogram-sales.png)
+Figure 2. Histogram of Sales (in thousands of dollors). It indicates that sales is concentrated around 11 thousands. The distribution is quite skewed to the right.
 
 
 ```{r fig.width=10, fig.height=10,echo=FALSE}
@@ -60,12 +62,13 @@ Before fitting the model, I first look at the general distributions of both TV a
 # Results
 
 ![](../images/scatterplot-tv-sales.png)
+Figure 3. Scatterplot TV sales. This indciates the linear relationship between budget spending on TV and Sales. It also shows that the variane is getting bigger as budget spending on TV increases.
 
 The scatterplot between TV advertising and Sales indicates that there is an approximately linear relationship between predictor and target variable. Since the variances from the regression line to points are getting bigger and bigger, it might suffer from heteroscadasticity. I could try to do a log-log transformation to alleviate this issue. However, overall, this plot indicates that there is a good chance that TV advertising affects sales.
 
 ```{r, results='asis', echo=FALSE, message=FALSE}
 
-print( xtable(summary(model.lm), caption = 'Information about Regression Coefficients'), comment = FALSE, caption.placement = 'top')
+print( xtable(summary(model.lm), caption = 'Information about Regression Coefficients. This cofficient table shows that one unit of TV adverstising increases, the unit of 0.0475 in Sales increases.'), comment = FALSE, caption.placement = 'bottom')
 ```
 
 Futhermore, I also look at regression coefficients shown in Table 2. The estimate for the slope (TV) is 0.0475. It means that as one unit of TV adverstising increases, the unit of 0.0475 in Sales increases. It is noteworthy that p value is very low. It implies that TV is a statistically significant variable in this model.
@@ -80,7 +83,7 @@ R2 = data.summary$r.squared
 Fstatistic = data.summary$fstatistic[1]
 
 df = data.frame(Quantity= c("RSS", "R2", "F-stat"), Value = c(RSS, R2, Fstatistic))
-print(xtable(df, caption = 'Regression Quality Indices'), comment = FALSE, include.rownames=FALSE, caption.placement = 'top')
+print(xtable(df, caption = 'Regression Quality Indices. This statistics indicate the quality of the model.'), comment = FALSE, include.rownames=FALSE, caption.placement = 'bottom')
 ```
 
 # Conclusions
